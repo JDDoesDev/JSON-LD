@@ -1,0 +1,181 @@
+<script src="jquery-1.11.2.min.js"></script>
+
+<form id="selector">
+  Select the type of markup you want to create:
+  <select name="form-selector">
+    <option>---</option>
+    <option value="person">Person</option>
+    <option value="product">Product</option>
+  </select>
+</form>
+
+<form id="person" style="display:none;">
+  <input type="hidden" data-path="@context" value="http://www.schema.org">
+  <input type="hidden" data-path="@type" value="person">
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text" data-path="name">
+  <label for="jobTitle">Job Title:</label>
+  <input id="jobTitle" name="jobTitle" type="text" data-path="jobTitle">
+  <label for="url">URL:</label>
+  <input id="url" name="url" type="text" data-path="url">
+  <input type="hidden" data-path="address.@type" value="PostalAddress">
+  <label for="address">Address:</label>
+  <input id="address" name="address" type="text" data-path="address.streetAddress">
+  <label for="addressLocality">City:</label>
+  <input id="addressLocality" name="addressLocality" type="text" data-path="address.addressLocality">
+  <label for="addressRegion">State/Region:</label>
+  <input id="addressRegion" name="addressRegion" type="text" data-path="address.addressRegion">
+  <label for="postalCode">Zip/Postal Code:</label>
+  <input id="postalCode" name="postalCode" type="text" data-path="address.postalCode">
+  <label for="addressCountry">Country:</label>
+  <input id="addressCountry" name="addressCountry" type="text" data-path="address.addressCountry">
+  <label for="email">Email:</label>
+  <input id="email" name="email" type="text" data-path="email">
+  <label for="telephone">Telephone (please include country code, +1 for USA):</label>
+  <input id="telephone" name="telephone" type="text" data-path="telephone">
+  <label for="birthDate">Birth Date (international format YYYY-MM-DD):</label>
+  <input id="birthDate" name="birthDate" type="text" data-path="birthDate">
+</form>
+
+<form id="product" style="display:none;">
+  <input type="hidden" data-path="@context" value="http://www.schema.org">
+  <input type="hidden" data-path="@type" value="product">
+  <label for="brand">Brand:</label>
+  <input id="brand" name="brand" type="text" data-path="brand">
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text" data-path="name">
+  <label for="image">Image (relative or absolute url):</label>
+  <input id="image" name="image" type="text" data-path="image">
+  <label for="desription">Description:</label>
+  <textarea rows="5" cols="50" name="description" data-path="description"></textarea>
+  <input type="hidden" data-path="aggregateRating.@type" value="aggregateRating">
+  <label for="rating">Rating:</label>
+  <input id="rating" name="rating" type="text" data-path="aggregateRating.ratingValue">
+  <label for="reviews">Based on how many reviews?</label>
+  <input id="reviews" name="reviews" type="text" data-path="aggregateRating.reviewCount">
+</form>
+<button id="reset">
+  Reset
+</button>
+<!--
+Product
+Name
+URL
+Description
+Brand
+Manufacturer
+Model
+Product ID
+Rating:
+Based on # reviews
+Price
+Condition
+Event
+Type
+Name
+URL
+Description
+Start Date
+End Date
+Duration
+Address
+PO Box
+City
+State
+Postal Code
+Country
+Organization
+Type
+Name
+URL
+Description
+Address
+PO Box
+City
+State
+Postal Code
+Country
+Movie
+Name
+URL
+Description
+Director
+Actor
+Actor
+Actor
+Book
+Name
+Url
+Description
+Author
+Date Published
+Publisher
+Book Edition
+ISBN
+Format
+Review
+Name
+URL
+Description
+Author
+Date Published
+Item Reviewed
+Review Body
+Rating
+Rating Max
+Rating Min
+-->
+<pre class="json">
+
+</pre>
+
+
+
+<script>
+  $(function() {
+    var selected;
+    var old;
+    $("#selector").change(function() {
+      old = selected;
+      selected = "#" + $("#selector option:selected").val();
+      if (old) {
+        $(old).slideToggle();
+      }
+      $(selected).slideToggle();
+      $("pre").html("");
+      $('input,textarea').each(function() {
+        if ($(this).attr('type') != 'hidden') {
+          $(this).val("");
+        };
+      });
+      element = {};
+      $(selected + ' input,' + selected + ' textarea').keyup(function() {
+        $(selected + ' input,' + selected + ' textarea').each(function() {
+
+          var path = $(this).data('path').split('.'),
+              currentData = element;
+          for (var i = 0; i < path.length - 1; i++) {
+            if (!currentData[path[i]]) {
+              currentData[path[i]] = {};
+            }
+            console.log(currentData[path[i]]);
+            currentData = currentData[path[i]];
+          }
+          currentData[path[path.length - 1]] = ($(this).val().length > 0 ? $(this).val() : null);
+          if (currentData[path[path.length - 1]] === null) {
+            delete currentData[path[path.length - 1]];
+          }
+          $(".json").html(JSON.stringify(element, null, 2));
+        });
+      });
+    });
+    $("#reset").click(function() {
+      $("pre").html("");
+      $('input,textarea').each(function() {
+        if ($(this).attr('type') != 'hidden') {
+          $(this).val("");
+        }
+      });
+    });
+  });
+</script>
