@@ -58,17 +58,23 @@ input,select,textarea {
 #formHolder {
   display: inline-block;
   width: 50%;
+  margin-bottom: 200px;
 }
 
 #buttonHolder {
   display: block;
   text-align: center;
-  margin-top: 2em;
+  margin:  2em 0;
 }
 
-textarea.json {
+.output {
+  vertical-align:top;
   margin-top: 2em;
   display: inline-block;
   width: 45%;
   height: 50%;
+}
+.json {
+  width:100%;
+  height: 80%;
 }
