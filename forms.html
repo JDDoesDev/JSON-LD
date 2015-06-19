@@ -1,6 +1,7 @@
-<script src='js/jquery-1.11.2.min.js'></script>
-<script src='js/json-ld.js'></script>
-<link href="styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+<link href="css/tooltipster.css" rel="stylesheet" type="text/css">
+
 <div id="formHolder">
   <form id="selector">
     Select the type of markup you want to create:
@@ -8,53 +9,253 @@
       <option>---</option>
     </select>
   </form>
+  <form id="local_business" style="display:none;">
+    <input type="hidden" data-path="@context" value="http://www.schema.org">
 
+    <label for="orgType">Select Local Business Type:</label>
+    <select name="orgType" data-path="@type">
+      <option>Animal Shelter</option>
+      <optgroup label='Automotive' id='automotive'>
+        Automotive <option>Automotive Business</option>
+        <option>Auto Body Shop</option>
+        <option>Auto Dealer</option>
+        <option>Auto Parts Store</option>
+        <option>Auto Rental</option>
+        <option>Auto Repair</option>
+        <option>Auto Wash</option>
+        <option>Gas Station</option>
+        <option>Motorcycle Dealer</option>
+        <option>Motorcycle Repair</option>
+      </optgroup>
+      <option>Child Care</option>
+      <option>Dry Cleaning Or Laundry</option>
+      <optgroup label='Emergency'>
+        <option>Emergency Service</option>
+        <option>Fire Station</option>
+        <option>Hospital</option>
+        <option>Police Station</option>
+      </optgroup>
+      <option>Employment Agency</option>
+      <optgroup label="Entertainment">
+        <option>Entertainment Business</option>
+        <option>Adult Entertainment</option>
+        <option>Amusement Park</option>
+        <option>Art Gallery</option>
+        <option>Casino</option>
+        <option>Comedy Club</option>
+        <option>Movie Theater</option>
+        <option>Night Club</option>
+      </optgroup>
+      <optgroup label='Financial'>
+        <option>Accounting Service</option>
+        <option>Automated Teller</option>
+        <option>Bank Or Credit Union</option>
+        <option>Insurance Agency</option>
+      </optgroup>
+      <optgroup label='Food'>
+        <option>Food Establishment</option>
+        <option>Bakery</option>
+        <option>Bar Or Pub</option>
+        <option>Brewery</option>
+        <option>Cafe Or Coffee Shop</option>
+        <option>Fast Food Restaurant</option>
+        <option>Ice Cream Shop</option>
+        <option>Restaurant</option>
+        <option>Winery</option>
+      </optgroup>
+      <option>Government Office</option>
+      <option>Post Office</option>
+      <optgroup label='Health And Beauty'>
+        <option>Health And Beauty Business</option>
+        <option>Beauty Salon</option>
+        <option>Day Spa</option>
+        <option>Hair Salon</option>
+        <option>Health Club</option>
+        <option>Nail Salon</option>
+        <option>Tattoo Parlor</option>
+      </optgroup>
+      <optgroup label='Home And Construction'>
+        <option>Home And Construction Business</option>
+        <option>Electrician</option>
+        <option>General Contractor</option>
+        <option>HVAC Business</option>
+        <option>House Painter</option>
+        <option>Locksmith</option>
+        <option>Moving Company</option>
+        <option>Plumber</option>
+        <option>RoofingContractor</option>
+      </optgroup>
+      <option>Internet Cafe</option>
+      <option>Library</option>
+      <optgroup label='Lodging'>
+        <option>Lodging Business</option>
+        <option>Bed And Breakfast</option>
+        <option>Hostel</option>
+        <option>Hotel</option>
+        <option>Motel</option>
+      </optgroup>
+      <optgroup label='Medical/Dental'>
+        <option>Dentist</option>
+        <option>Diagnostic Lab</option>
+        <option>Hospital</option>
+        <option>Medical Clinic</option>
+        <option>Optician</option>
+        <option>Pharmacy</option>
+        <option>Physician</option>
+        <option>Veterinary Care</option>
+      </optgroup>
+      <optgroup label='Professional Services'>
+        <option>Professional Service</option>
+        <option>Accounting Service</option>
+        <option>Attorney</option>
+        <option>Dentist</option>
+        <option>Electrician</option>
+        <option>General Contractor</option>
+        <option>House Painter</option>
+        <option>Locksmith</option>
+        <option>Notary</option>
+        <option>Plumber</option>
+        <option>Roofing Contractor</option>
+      </optgroup>
+      <option>Radio Station</option>
+      <option>Real Estate Agent</option>
+      <option>Recycling Center</option>
+      <option>Self Storage</option>
+      <option>Shopping Center</option>
+      <optgroup label='Sports Activities'>
+        <option>Sports Activity Location</option>
+        <option>Bowling Alley</option>
+        <option>Exercise Gym</option>
+        <option>Golf Course</option>
+        <option>Health Club</option>
+        <option>Public Swimming Pool</option>
+        <option>Ski Resort</option>
+        <option>Sports Club</option>
+        <option>Stadium Or Arena</option>
+        <option>Tennis Complex</option>
+      </optgroup>
+      <optgroup label='Stores'>
+        <option>Store</option>
+        <option>Auto Parts Store</option>
+        <option>Bike Store</option>
+        <option>Book Store</option>
+        <option>Clothing Store</option>
+        <option>Computer Store</option>
+        <option>Convenience Store</option>
+        <option>Department Store</option>
+        <option>Electronics Store</option>
+        <option>Florist</option>
+        <option>Furniture Store</option>
+        <option>Garden Store</option>
+        <option>Grocery Store</option>
+        <option>Hardware Store</option>
+        <option>Hobby Shop</option>
+        <option>Home Goods Store</option>
+        <option>Jewelry Store</option>
+        <option>Liquor Store</option>
+        <option>Mens Clothing Store</option>
+        <option>Mobile Phone Store</option>
+        <option>Movie Rental Store</option>
+        <option>Music Store</option>
+        <option>Office Equipment Store</option>
+        <option>Outlet Store</option>
+        <option>Pawn Shop</option>
+        <option>Pet Store</option>
+        <option>Shoe Store</option>
+        <option>Sporting Goods Store</option>
+        <option>Tire Shop</option>
+        <option>Toy Store</option>
+        <option>Wholesale Store</option>
+      </optgroup>
+      <option>Television Station</option>
+      <option>Tourist Information Center</option>
+      <option>Travel Agency</option>
+    </select>
+    <label for="name">Name:</label>
+    <input class="name" name="name" type="text" data-path="name">
+    <label for="url">URL:</label>
+    <input class="url" name="url" type="text" data-path="url">
+    <button class="addUrl">
+      Add another URL
+    </button>
+    <input type="hidden" data-path="sameAs" class="sameAsData">
+    <label for="logo">Logo (use a URL to your logo image):</label>
+    <input class="logo" name="logo" type="text" data-path="logo">
+    <label for="image">Image (use a URL to your an image of your business):</label>
+    <input class="image" name="image" type="text" data-path="image">
+    <label for="desription">Description:</label>
+    <textarea rows="5" cols="50" name="description" data-path="description"></textarea>
+    <input type="hidden" data-path="address.@type" value="PostalAddress">
+    <label for="address">Address:</label>
+    <input class="address" name="address" type="text" data-path="address.streetAddress">
+    <label for="po-box">PO Box:</label>
+    <input class="po-box" name="po-box" type="text" data-path="address.postOfficeBoxNumber">
+    <label for="addressLocality">City:</label>
+    <input class="addressLocality" name="addressLocality" type="text" data-path="address.addressLocality">
+    <label for="addressRegion">State/Region:</label>
+    <input class="addressRegion" name="addressRegion" type="text" data-path="address.addressRegion">
+    <label for="postalCode">Zip/Postal Code:</label>
+    <input class="postalCode" name="postalCode" type="text" data-path="address.postalCode">
+    <label for="addressCountry">Country:</label>
+    <input class="addressCountry" name="addressCountry" type="text" data-path="address.addressCountry">
+    <label for="geoOption">Include Lat/Long coordinates for better location?</label>
+    <input class="geoOption" name="geoOption" type="checkbox" data-path='check' value='GeoCoordinates'>
+    <span class="geoHolder"></span>
+    <label for="hasMap">Include a Map: <span class="mapHelp"><i class="fa fa-question-circle"></i></span></label>
+    <input class="hasMap" name="hasMap" type="text" data-path="hasMap">
+    <label for="openingHours">Open Hours (2 letter days and 24 hour time. Example: "Mo, Tu, We, Th, Fr 10:00-18:00" :</label>
+    <input class="openingHours" name="openingHours" type="text" data-path="openingHours">
+    <input type="hidden" data-path="contactPoint.@type" value="ContactPoint">
+    <label for="contactType">Contact Type:</label>
+    <input class="contactType" name="contactType" type="text" data-path="contactPoint.contactType">
+    <label for="telephone">Telephone:</label>
+    <input class="telephone" name="telephone" type="text" data-path="contactPoint.telephone">
+  </form>
   <form id="person" style="display:none;">
     <input type="hidden" data-path="@context" value="http://www.schema.org">
     <input type="hidden" data-path="@type" value="person">
     <label for="name">Name:</label>
-    <input id="name" name="name" type="text" data-path="name">
+    <input class="name" name="name" type="text" data-path="name">
     <label for="jobTitle">Job Title:</label>
-    <input id="jobTitle" name="jobTitle" type="text" data-path="jobTitle">
+    <input class="jobTitle" name="jobTitle" type="text" data-path="jobTitle">
     <label for="url">URL:</label>
-    <input id="url" name="url" type="text" data-path="url">
+    <input class="url" name="url" type="text" data-path="url">
     <input type="hidden" data-path="address.@type" value="PostalAddress">
     <label for="address">Address:</label>
-    <input id="address" name="address" type="text" data-path="address.streetAddress">
+    <input class="address" name="address" type="text" data-path="address.streetAddress">
     <label for="po-box">PO Box:</label>
-    <input id="po-box" name="po-box" type="text" data-path="address.postOfficeBoxNumber">
+    <input class="po-box" name="po-box" type="text" data-path="address.postOfficeBoxNumber">
     <label for="addressLocality">City:</label>
-    <input id="addressLocality" name="addressLocality" type="text" data-path="address.addressLocality">
+    <input class="addressLocality" name="addressLocality" type="text" data-path="address.addressLocality">
     <label for="addressRegion">State/Region:</label>
-    <input id="addressRegion" name="addressRegion" type="text" data-path="address.addressRegion">
+    <input class="addressRegion" name="addressRegion" type="text" data-path="address.addressRegion">
     <label for="postalCode">Zip/Postal Code:</label>
-    <input id="postalCode" name="postalCode" type="text" data-path="address.postalCode">
+    <input class="postalCode" name="postalCode" type="text" data-path="address.postalCode">
     <label for="addressCountry">Country:</label>
-    <input id="addressCountry" name="addressCountry" type="text" data-path="address.addressCountry">
+    <input class="addressCountry" name="addressCountry" type="text" data-path="address.addressCountry">
     <label for="email">Email:</label>
-    <input id="email" name="email" type="text" data-path="email">
+    <input class="email" name="email" type="text" data-path="email">
     <label for="telephone">Telephone (please include country code, +1 for USA):</label>
-    <input id="telephone" name="telephone" type="text" data-path="telephone">
+    <input class="telephone" name="telephone" type="text" data-path="telephone">
     <label for="birthDate">Birth Date (international format YYYY-MM-DD):</label>
-    <input id="birthDate" name="birthDate" type="text" data-path="birthDate">
+    <input class="birthDate" name="birthDate" type="text" data-path="birthDate">
   </form>
-
   <form id="product" style="display:none;">
     <input type="hidden" data-path="@context" value="http://www.schema.org">
     <input type="hidden" data-path="@type" value="product">
     <label for="brand">Brand:</label>
-    <input id="brand" name="brand" type="text" data-path="brand">
+    <input class="brand" name="brand" type="text" data-path="brand">
     <label for="name">Name:</label>
-    <input id="name" name="name" type="text" data-path="name">
+    <input class="name" name="name" type="text" data-path="name">
     <label for="image">Image (relative or absolute url):</label>
-    <input id="image" name="image" type="text" data-path="image">
+    <input class="image" name="image" type="text" data-path="image">
     <label for="desription">Description:</label>
     <textarea rows="5" cols="50" name="description" data-path="description"></textarea>
     <input type="hidden" data-path="aggregateRating.@type" value="aggregateRating">
     <label for="rating">Rating:</label>
-    <input id="rating" name="rating" type="text" data-path="aggregateRating.ratingValue">
+    <input class="rating" name="rating" type="text" data-path="aggregateRating.ratingValue">
     <label for="reviews">Based on how many reviews?</label>
-    <input id="reviews" name="reviews" type="text" data-path="aggregateRating.reviewCount">
+    <input class="reviews" name="reviews" type="text" data-path="aggregateRating.reviewCount">
   </form>
   <form id="event" style="display:none;">
     <input type="hidden" data-path="@context" value="http://www.schema.org">
@@ -78,38 +279,38 @@
       <option value="VisualArtsEvent"></option>
     </select>
     <label for="name">Name:</label>
-    <input id="name" name="name" type="text" data-path="name">
+    <input class="name" name="name" type="text" data-path="name">
     <label for="url">URL:</label>
-    <input id="url" name="url" type="text" data-path="url">
+    <input class="url" name="url" type="text" data-path="url">
     <label for="desription">Description:</label>
     <textarea rows="5" cols="50" name="description" data-path="description"></textarea>
     <label for="startDate">Start Date(mm/dd/yyyy hh:mm am/pm):</label>
-    <input id="startDate" name="startDate" type="datetime-local" data-path="startDate" class="start-date">
+    <input class="startDate" name="startDate" type="datetime-local" data-path="startDate" class="start-date">
     <label for="endDate">End Date(mm/dd/yyyy hh:mm am/pm):</label>
-    <input id="endDate" name="endDate" type="datetime-local" data-path="endDate" class="end-date">
+    <input class="endDate" name="endDate" type="datetime-local" data-path="endDate" class="end-date">
     <input type="hidden" data-path="location.@type" value="Place">
     <label for="location-name">Venue Name:</label>
-    <input id="location-name" name="location-name" type="text" data-path="location.name">
+    <input class="location-name" name="location-name" type="text" data-path="location.name">
     <label for="location-url">Venue URL:</label>
-    <input id="location-url" name="location-url" type="text" data-path="location.sameAs">
+    <input class="location-url" name="location-url" type="text" data-path="location.sameAs">
     <input type="hidden" data-path="location.address.@type" value="PostalAddress">
     <label for="address">Address:</label>
-    <input id="address" name="address" type="text" data-path="location.address.streetAddress">
+    <input class="address" name="address" type="text" data-path="location.address.streetAddress">
     <label for="addressLocality">City:</label>
-    <input id="addressLocality" name="addressLocality" type="text" data-path="location.address.addressLocality">
+    <input class="addressLocality" name="addressLocality" type="text" data-path="location.address.addressLocality">
     <label for="addressRegion">State/Region:</label>
-    <input id="addressRegion" name="addressRegion" type="text" data-path="location.address.addressRegion">
+    <input class="addressRegion" name="addressRegion" type="text" data-path="location.address.addressRegion">
     <label for="postalCode">Zip/Postal Code:</label>
-    <input id="postalCode" name="postalCode" type="text" data-path="location.address.postalCode">
+    <input class="postalCode" name="postalCode" type="text" data-path="location.address.postalCode">
     <label for="addressCountry">Country:</label>
-    <input id="addressCountry" name="addressCountry" type="text" data-path="location.address.addressCountry">
+    <input class="addressCountry" name="addressCountry" type="text" data-path="location.address.addressCountry">
     <input type="hidden" data-path="offers.@type" value="Offer">
     <label for="offerDesc">Offer Description:</label>
-    <input id="offerDesc" name="offerDesc" type="text" data-path="offers.description">
+    <input class="offerDesc" name="offerDesc" type="text" data-path="offers.description">
     <label for="offerURL">Offer URL:</label>
-    <input id="offerURL" name="offerURL" type="text" data-path="offers.url">
+    <input class="offerURL" name="offerURL" type="text" data-path="offers.url">
     <label for="offerPrice">Offer Price:</label>
-    <input id="offerPrice" name="offerPrice" type="text" data-path="offers.price">
+    <input class="offerPrice" name="offerPrice" type="text" data-path="offers.price">
   </form>
   <form id="organization" style="display:none;">
     <input type="hidden" data-path="@context" value="http://www.schema.org">
@@ -117,43 +318,97 @@
     <select name="orgType" data-path="@type">
       <option value="Organization"></option>
       <option value="Corporation"></option>
-      <option value="EducationalOrganization"></option>
-      <option value="GovernmentOrganization"></option>
-      <option value="LocalBusiness"></option>
+      <option value="Educational Organization"></option>
+      <option value="Government Organization"></option>
+      <option value="Local Business"></option>
       <option value="NGO"></option>
-      <option value="PerformingGroup"></option>
+      <option value="Performing Group"></option>
       <option value="SportsTeam"></option>
     </select>
     <label for="name">Name:</label>
-    <input id="name" name="name" type="text" data-path="name">
+    <input class="name" name="name" type="text" data-path="name">
     <label for="url">URL:</label>
-    <input id="url" name="url" type="text" data-path="url">
+    <input class="url" name="url" type="text" data-path="url">
+    <button class="addUrl">
+      Add another URL
+    </button>
+    <input type="hidden" data-path="sameAs" class="sameAsData">
+    <label for="logo">Logo (use a URL to your logo image):</label>
+    <input class="logo" name="logo" type="text" data-path="logo">
+    <label for="image">Image (use a URL to your an image of your business):</label>
+    <input class="image" name="image" type="text" data-path="image">
     <label for="desription">Description:</label>
     <textarea rows="5" cols="50" name="description" data-path="description"></textarea>
     <input type="hidden" data-path="address.@type" value="PostalAddress">
     <label for="address">Address:</label>
-    <input id="address" name="address" type="text" data-path="address.streetAddress">
+    <input class="address" name="address" type="text" data-path="address.streetAddress">
     <label for="po-box">PO Box:</label>
-    <input id="po-box" name="po-box" type="text" data-path="address.postOfficeBoxNumber">
+    <input class="po-box" name="po-box" type="text" data-path="address.postOfficeBoxNumber">
     <label for="addressLocality">City:</label>
-    <input id="addressLocality" name="addressLocality" type="text" data-path="address.addressLocality">
+    <input class="addressLocality" name="addressLocality" type="text" data-path="address.addressLocality">
     <label for="addressRegion">State/Region:</label>
-    <input id="addressRegion" name="addressRegion" type="text" data-path="address.addressRegion">
+    <input class="addressRegion" name="addressRegion" type="text" data-path="address.addressRegion">
     <label for="postalCode">Zip/Postal Code:</label>
-    <input id="postalCode" name="postalCode" type="text" data-path="address.postalCode">
+    <input class="postalCode" name="postalCode" type="text" data-path="address.postalCode">
     <label for="addressCountry">Country:</label>
-    <input id="addressCountry" name="addressCountry" type="text" data-path="address.addressCountry">
-    <label for="openingHours">Open Hours (2 letter days and 24 hour time. Example: "Mo, Tu, We, Th, Fr 10:00-18:00" :</label>
-    <input id="openingHours" name="openingHours" type="text" data-path="openingHours">
+    <input class="addressCountry" name="addressCountry" type="text" data-path="address.addressCountry">
+    <label for="geoOption">Include Lat/Long coordinates for better location?</label>
+    <input class="geoOption" name="geoOption" type="checkbox" data-path='check' value='GeoCoordinates'>
+    <span class="geoHolder"></span>
+    <label for="hasMap">Include a Map: <span class="mapHelp"><i class="fa fa-question-circle"></i></span></label>
+    <input class="hasMap" name="hasMap" type="text" data-path="hasMap">
+    <p>
+      Select Business Hours:
+    </p>
+    <input class='openingHours' type="hidden" data-path='openingHours'>
+
+    <div class='days Mo'>
+      <label for='openMon'>Mo</label>
+      <input name='openMon' class='openDays' type='checkbox' data-day='Mo'>
+    </div>
+    <div class='days Tu'>
+      <label for='openTue'>Tu</label>
+      <input name='openTue' class='openDays' type='checkbox' data-day='Tu'>
+    </div>
+    <div class='days We'>
+      <label for='openWed'>We</label>
+      <input name='openWed' class='openDays' type='checkbox' data-day='We'>
+    </div>
+    <div class='days Th'>
+      <label for='openThu'>Th</label>
+      <input name='openThur' class='openDays' type='checkbox' data-day='Th'>
+    </div>
+    <div class='days Fr'>
+      <label for='openFri'>Fr</label>
+      <input name='openFri' class='openDays' type='checkbox' data-day='Fr'>
+    </div>
+    <div class='days Sa'>
+      <label for='openSat'>Sa</label>
+      <input name='openSat' class='openDays' type='checkbox' data-day='Sa'>
+    </div>
+    <div class='days Su'>
+      <label for='openSun'>Su</label>
+      <input name='openSun' class='openDays' type='checkbox' data-day='Su'>
+    </div>
     <input type="hidden" data-path="contactPoint.@type" value="ContactPoint">
-    <label for="contactType">Contact Type:</label>
-    <input id="contactType" name="contactType" type="text" data-path="contactPoint.contactType">
     <label for="telephone">Telephone:</label>
-    <input id="telephone" name="telephone" type="text" data-path="contactPoint.telephone">
+    <input class="telephone" name="telephone" type="text" data-path="contactPoint.telephone">
+    <label for="contactType">Contact Type:</label>
+    <input class="contactType" name="contactType" type="text" data-path="contactPoint.contactType">
+  </form>
+  <form id="website" style="display:none;">
+    <input type="hidden" data-path="@context" value="http://www.schema.org">
+    <input type="hidden" data-path="@type" value="WebSite">
+    <label for="name">Name:</label>
+    <input class="name" name="name" type="text" data-path="name">
+    <label for="altName">Alternate Name:</label>
+    <input class="name" name="name" type="text" data-path="alternateName">
+    <label for="url">URL:</label>
+    <input class="url" name="url" type="text" data-path="url">
   </form>
 </div>
 <div class="output">
-  <textarea class="json">
+  <textarea class="json" readonly="readonly">
 
   </textarea>
   <div id="buttonHolder">
@@ -162,10 +417,124 @@
     </button>
   </div>
 </div>
+<div id="geoHidden" style="display: none;">
+  <input type='hidden' data-path='geo.@type' value='GeoCoordinates'>
+  <label for="geoLat">Latitude:</label>
+  <input type='text' id='geoLat' name='geoLat' data-path='geo.latitude'>
+  <label for="geoLong">Longitude:</label>
+  <input type='text' id='geoLong' name='geoLong' data-path='geo.longitude'>
+</div>
+<div id="sameAsHidden" style="display: none;">
+  <input class="sameAsField" name="sameAs" type="text">
+</div>
+<div id="timeKeeper" style="display: none;">
+  <span class='openHours'> <label for='open'>Open</label>
+    <select class='times' name='open'>
+      <option value="">-- select --</option>
+      <option value="01:00">00:00</option>
+      <option value="01:00">00:30</option>
+      <option value="01:00">01:00</option>
+      <option value="01:30">01:30</option>
+      <option value="02:00">02:00</option>
+      <option value="02:30">02:30</option>
+      <option value="03:00">03:00</option>
+      <option value="03:30">03:30</option>
+      <option value="04:00">04:00</option>
+      <option value="04:30">04:30</option>
+      <option value="05:00">05:00</option>
+      <option value="05:30">05:30</option>
+      <option value="06:00">06:00</option>
+      <option value="06:30">06:30</option>
+      <option value="07:00">07:00</option>
+      <option value="07:30">07:30</option>
+      <option value="08:00">08:00</option>
+      <option value="08:30">08:30</option>
+      <option value="09:00">09:00</option>
+      <option value="09:30">09:30</option>
+      <option value="10:00">10:00</option>
+      <option value="10:30">10:30</option>
+      <option value="11:00">11:00</option>
+      <option value="11:30">11:30</option>
+      <option value="12:00">12:00</option>
+      <option value="12:30">12:30</option>
+      <option value="13:00">13:00</option>
+      <option value="13:30">13:30</option>
+      <option value="14:00">14:00</option>
+      <option value="14:30">14:30</option>
+      <option value="15:00">15:00</option>
+      <option value="15:30">15:30</option>
+      <option value="16:00">16:00</option>
+      <option value="16:30">16:30</option>
+      <option value="17:00">17:00</option>
+      <option value="17:30">17:30</option>
+      <option value="18:00">18:00</option>
+      <option value="18:30">18:30</option>
+      <option value="19:00">19:00</option>
+      <option value="19:30">19:30</option>
+      <option value="20:00">20:00</option>
+      <option value="20:30">20:30</option>
+      <option value="21:00">21:00</option>
+      <option value="21:30">21:30</option>
+      <option value="22:00">22:00</option>
+      <option value="22:30">22:30</option>
+      <option value="23:00">23:00</option>
+      <option value="23:30">23:30</option>
+    </select> </span>
+  <span class='closeHours'> <label for='close'>Close</label>
+    <select class='times' name='close'>
+      <option value="">-- select --</option>
+      <option value="01:00">00:00</option>
+      <option value="01:00">00:30</option>
+      <option value="01:00">01:00</option>
+      <option value="01:30">01:30</option>
+      <option value="02:00">02:00</option>
+      <option value="02:30">02:30</option>
+      <option value="03:00">03:00</option>
+      <option value="03:30">03:30</option>
+      <option value="04:00">04:00</option>
+      <option value="04:30">04:30</option>
+      <option value="05:00">05:00</option>
+      <option value="05:30">05:30</option>
+      <option value="06:00">06:00</option>
+      <option value="06:30">06:30</option>
+      <option value="07:00">07:00</option>
+      <option value="07:30">07:30</option>
+      <option value="08:00">08:00</option>
+      <option value="08:30">08:30</option>
+      <option value="09:00">09:00</option>
+      <option value="09:30">09:30</option>
+      <option value="10:00">10:00</option>
+      <option value="10:30">10:30</option>
+      <option value="11:00">11:00</option>
+      <option value="11:30">11:30</option>
+      <option value="12:00">12:00</option>
+      <option value="12:30">12:30</option>
+      <option value="13:00">13:00</option>
+      <option value="13:30">13:30</option>
+      <option value="14:00">14:00</option>
+      <option value="14:30">14:30</option>
+      <option value="15:00">15:00</option>
+      <option value="15:30">15:30</option>
+      <option value="16:00">16:00</option>
+      <option value="16:30">16:30</option>
+      <option value="17:00">17:00</option>
+      <option value="17:30">17:30</option>
+      <option value="18:00">18:00</option>
+      <option value="18:30">18:30</option>
+      <option value="19:00">19:00</option>
+      <option value="19:30">19:30</option>
+      <option value="20:00">20:00</option>
+      <option value="20:30">20:30</option>
+      <option value="21:00">21:00</option>
+      <option value="21:30">21:30</option>
+      <option value="22:00">22:00</option>
+      <option value="22:30">22:30</option>
+      <option value="23:00">23:00</option>
+      <option value="23:30">23:30</option>
+      <option value="23:59">24:00</option>
+    </select> </span>
+</div>
 
-
-
-
-<script>
-
-</script>
+<script src='js/jquery-1.11.2.min.js'></script>
+<script src='js/jquery.tooltipster.min.js'></script>
+<script src='js/json-ld.js'></script>
