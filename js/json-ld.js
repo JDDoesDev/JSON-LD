@@ -62,11 +62,12 @@ $(function() {
       days = [];
       //console.log(this);
       $(this).after($timeKeeper);
-      $('.openDays').each(function() {
+      $('.openDays', selected).each(function() {
         if ($(this).is(':checked')) {
           days.push($(this).data('day'));
         }
       });
+      console.log(days);
     } else {
       $('.openHours, .closeHours', $(this).parent()).remove();
       var p = $.inArray($(this).data('day'), days);
@@ -76,7 +77,7 @@ $(function() {
   });
 
   $(document).on('change', '.openHours select, .closeHours select, .openDays', function() {
-    var hourObj = hourCheck(days),
+    var hourObj = hourCheck(days, selected),
         prevDayHours;
     var dayList = '';
     var hourKeys = Object.keys(hourObj).map(function(key) {
@@ -118,7 +119,7 @@ $(function() {
 
   });
 
-  function hourCheck(days) {
+  function hourCheck(days, selected) {
     var hours = {},
         $days = $(days);
     $days.each(function() {
@@ -126,7 +127,7 @@ $(function() {
       var openTime,
           closedTime,
           time;
-      $('.days').each(function() {
+      $('.days', selected).each(function() {
         if ($(this).hasClass(_this)) {
           openTime = $('.openHours select', this).val();
           closedTime = $('.closeHours select', this).val();
@@ -257,10 +258,10 @@ $(function() {
           if ($(this).val().length > 0) {
             if (path == 'sameAs') {
               currentData[path[path.length - 1]] = $(this).val().split(';;');
-            } else if (path == 'description' || path == 'openingHours' || path == 'name') {
-              currentData[path[path.length - 1]] = $(this).val();
-            } else {
+            } else if (path == '@type') {
               currentData[path[path.length - 1]] = $(this).val().split(' ').join('');
+            } else {
+              currentData[path[path.length - 1]] = $(this).val();
             }
           }
           if (currentData[path[path.length - 1]] === null) {

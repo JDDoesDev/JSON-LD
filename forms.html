@@ -203,8 +203,39 @@
     <span class="geoHolder"></span>
     <label for="hasMap">Include a Map: <span class="mapHelp"><i class="fa fa-question-circle"></i></span></label>
     <input class="hasMap" name="hasMap" type="text" data-path="hasMap">
-    <label for="openingHours">Open Hours (2 letter days and 24 hour time. Example: "Mo, Tu, We, Th, Fr 10:00-18:00" :</label>
-    <input class="openingHours" name="openingHours" type="text" data-path="openingHours">
+    <p>
+      Select Business Hours:
+    </p>
+    <input class='openingHours' type="hidden" data-path='openingHours'>
+
+    <div class='days Mo'>
+      <label for='openMon'>Mo</label>
+      <input name='openMon' class='openDays' type='checkbox' data-day='Mo'>
+    </div>
+    <div class='days Tu'>
+      <label for='openTue'>Tu</label>
+      <input name='openTue' class='openDays' type='checkbox' data-day='Tu'>
+    </div>
+    <div class='days We'>
+      <label for='openWed'>We</label>
+      <input name='openWed' class='openDays' type='checkbox' data-day='We'>
+    </div>
+    <div class='days Th'>
+      <label for='openThu'>Th</label>
+      <input name='openThur' class='openDays' type='checkbox' data-day='Th'>
+    </div>
+    <div class='days Fr'>
+      <label for='openFri'>Fr</label>
+      <input name='openFri' class='openDays' type='checkbox' data-day='Fr'>
+    </div>
+    <div class='days Sa'>
+      <label for='openSat'>Sa</label>
+      <input name='openSat' class='openDays' type='checkbox' data-day='Sa'>
+    </div>
+    <div class='days Su'>
+      <label for='openSun'>Su</label>
+      <input name='openSun' class='openDays' type='checkbox' data-day='Su'>
+    </div>
     <input type="hidden" data-path="contactPoint.@type" value="ContactPoint">
     <label for="contactType">Contact Type:</label>
     <input class="contactType" name="contactType" type="text" data-path="contactPoint.contactType">
