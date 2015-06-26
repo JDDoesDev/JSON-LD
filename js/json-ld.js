@@ -46,16 +46,8 @@ $(function() {
 
   //changes the displayed form based on the selection
 
-  var $geoInput = $('#geoHidden').html(),
-      $timeKeeper = $('#timeKeeper').html();
-  $('.geoOption').change(function() {
-    if ($(this).is(':checked')) {
-      $('.geoHolder').html($geoInput);
-    } else {
-      $('.geoHolder').html('');
-    }
-    console.log($geoInput);
-  });
+
+  var $timeKeeper = $('#timeKeeper').html();
 
   $('.openDays').change(function() {
     if ($(this).is(':checked')) {
@@ -67,12 +59,12 @@ $(function() {
           days.push($(this).data('day'));
         }
       });
-      console.log(days);
+     // console.log(days);
     } else {
       $('.openHours, .closeHours', $(this).parent()).remove();
       var p = $.inArray($(this).data('day'), days);
       days.splice(p, 1);
-      console.log(days);
+      //console.log(days);
     }
   });
 
@@ -153,16 +145,29 @@ $(function() {
   $('.addUrl').click(function(e) {
     e.preventDefault();
     if ($('.url', selected).next('.sameAsField').length === 0) {
-      $('.url', selected).after(sameAsField);
+      $('label[for=sameAs]', selected).css('display','initial');
+      $('label[for=sameAs]', selected).after(sameAsField);
       $('.sameAsField', selected).last().attr('name', 'sameAs_' + sameAsCount);
+      $('.removeUrl', selected).css('display','initial');
       sameAsCount++;
     } else {
       $('.sameAsField', selected).last().after(sameAsField);
       $('.sameAsField', selected).last().attr('name', 'sameAs_' + sameAsCount);
       sameAsCount++;
     }
-    $input = null;
-    $input = $(selected + ' input,' + selected + ' textarea,' + selected + ' select');
+  });
+  $('.removeUrl').click(function(e) {
+    e.preventDefault();
+    if ($('.sameAsField', selected).length > 1) {
+      $('.sameAsField', selected).last().remove();
+      sameAsCount--;
+    } else {
+      $('.sameAsField', selected).last().remove();
+      $('.url', selected).next('.sameAsField').remove();
+      $('label[for=sameAs]', selected).css('display','none');
+      $('.removeUrl', selected).css('display','none');
+      sameAsCount--;
+    }
   });
 
   $(document).on('blur', '.sameAsField', function() {
@@ -185,6 +190,7 @@ $(function() {
   });
   $("#reset").click(function() {
     $("pre").html("");
+    sameAsCount = 0;
     $('input,textarea,select', selected).each(function() {
       if ($(this).attr('type') != 'hidden') {
         $(this).val("");
@@ -194,6 +200,7 @@ $(function() {
       $(this).css('display', 'none');
     });
   });
+
   $("#selector").change(function() {
     old = selected;
     selected = "#" + $("#selector option:selected").val();
@@ -228,6 +235,8 @@ $(function() {
         $offerPrice = $('.offerPrice', selected),
         $locationName = $('.location-name', selected),
         $locationURL = $('.location-url', selected);
+        $geoLat = $('.geoLat', selected);
+        $geoLong = $('.geoLong', selected);
 
     // fire when a key is pressed in an input or textarea
     $(document).on('keyup', $input, function() {
@@ -286,6 +295,10 @@ $(function() {
 
           if (!$offerDesc.val() && !$offerURL.val() && !$offerPrice.val()) {
             delete element.offers;
+          }
+
+          if (!$geoLat.val() && !$geoLong.val()) {
+            delete element.geo;
           }
 
           //prep it for output

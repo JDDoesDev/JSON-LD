@@ -1,16 +1,4 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -19,8 +7,7 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block;
 }
 body {
@@ -32,8 +19,7 @@ ol, ul {
 blockquote, q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before, blockquote:after, q:before, q:after {
   content: '';
   content: none;
 }
@@ -49,11 +35,11 @@ form {
 }
 
 input, label, select {
-display: block;
-width: 50%;
-clear: both;
+  display: block;
+  width: 50%;
+  clear: both;
 }
-input,select,textarea {
+input, select, textarea {
   margin-bottom: 1em;
 }
 #formHolder {
@@ -65,18 +51,18 @@ input,select,textarea {
 #buttonHolder {
   display: block;
   text-align: center;
-  margin:  2em 0;
+  margin: 2em 0;
 }
 
 .output {
-  vertical-align:top;
+  vertical-align: top;
   margin-top: 2em;
   display: inline-block;
   width: 45%;
   height: 50%;
 }
 .json {
-  width:100%;
+  width: 100%;
   height: 80%;
 }
 .openHours, .closeHours {
@@ -85,5 +71,31 @@ input,select,textarea {
 }
 
 .days select {
-    width: 75%;
-  }
+  width: 75%;
+}
+
+.days span {
+  float: left;
+  width: 30%;
+}
+.days {
+  clear: both;
+}
+.days label {
+  width: 5%;
+  display: block;
+  float: left;
+  clear: none;
+}
+.days span label {
+  width: 25%;
+}
+.days input {
+  width: 10%;
+  float: left;
+  clear: none;
+}
+.days span select {
+  width: 50%;
+  display: inline-block;
+}

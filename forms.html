@@ -175,8 +175,12 @@
     <input class="name" name="name" type="text" data-path="name">
     <label for="url">URL:</label>
     <input class="url" name="url" type="text" data-path="url">
+    <label for="sameAs" style="display: none;">sameAs URL:</label>
     <button class="addUrl">
-      Add another URL
+      Add sameAs
+    </button>
+    <button class="removeUrl" style="display: none;">
+      Remove sameAs
     </button>
     <input type="hidden" data-path="sameAs" class="sameAsData">
     <label for="logo">Logo (use a URL to your logo image):</label>
@@ -188,8 +192,6 @@
     <input type="hidden" data-path="address.@type" value="PostalAddress">
     <label for="address">Address:</label>
     <input class="address" name="address" type="text" data-path="address.streetAddress">
-    <label for="po-box">PO Box:</label>
-    <input class="po-box" name="po-box" type="text" data-path="address.postOfficeBoxNumber">
     <label for="addressLocality">City:</label>
     <input class="addressLocality" name="addressLocality" type="text" data-path="address.addressLocality">
     <label for="addressRegion">State/Region:</label>
@@ -198,9 +200,13 @@
     <input class="postalCode" name="postalCode" type="text" data-path="address.postalCode">
     <label for="addressCountry">Country:</label>
     <input class="addressCountry" name="addressCountry" type="text" data-path="address.addressCountry">
-    <label for="geoOption">Include Lat/Long coordinates for better location?</label>
-    <input class="geoOption" name="geoOption" type="checkbox" data-path='check' value='GeoCoordinates'>
-    <span class="geoHolder"></span>
+    <label for="geoOption">Include Lat/Long coordinates for better location</label>
+    <br/>
+    <input type='hidden' data-path='geo.@type' value='GeoCoordinates'>
+    <label for="geoLat">Latitude:</label>
+    <input type='text' class='geoLat' name='geoLat' data-path='geo.latitude'>
+    <label for="geoLong">Longitude:</label>
+    <input type='text' class='geoLong' name='geoLong' data-path='geo.longitude'>
     <label for="hasMap">Include a Map: <span class="mapHelp"><i class="fa fa-question-circle"></i></span></label>
     <input class="hasMap" name="hasMap" type="text" data-path="hasMap">
     <p>
@@ -240,7 +246,7 @@
     <label for="contactType">Contact Type:</label>
     <input class="contactType" name="contactType" type="text" data-path="contactPoint.contactType">
     <label for="telephone">Telephone:</label>
-    <input class="telephone" name="telephone" type="text" data-path="contactPoint.telephone">
+    <input class="telephone" name="telephone" type="text" data-path="contactPoint.telephone" placeholder="+1(XXX) XXX-XXXX">
   </form>
   <form id="person" style="display:none;">
     <input type="hidden" data-path="@context" value="http://www.schema.org">
@@ -267,7 +273,7 @@
     <label for="email">Email:</label>
     <input class="email" name="email" type="text" data-path="email">
     <label for="telephone">Telephone (please include country code, +1 for USA):</label>
-    <input class="telephone" name="telephone" type="text" data-path="telephone">
+    <input class="telephone" name="telephone" type="text" data-path="telephone" placeholder="+1(XXX) XXX-XXXX">
     <label for="birthDate">Birth Date (international format YYYY-MM-DD):</label>
     <input class="birthDate" name="birthDate" type="text" data-path="birthDate">
   </form>
@@ -360,8 +366,12 @@
     <input class="name" name="name" type="text" data-path="name">
     <label for="url">URL:</label>
     <input class="url" name="url" type="text" data-path="url">
+    <label for="sameAs" style="display: none;">sameAs URL:</label>
     <button class="addUrl">
-      Add another URL
+      Add sameAs
+    </button>
+    <button class="removeUrl" style="display: none;">
+      Remove sameAs
     </button>
     <input type="hidden" data-path="sameAs" class="sameAsData">
     <label for="logo">Logo (use a URL to your logo image):</label>
@@ -383,9 +393,13 @@
     <input class="postalCode" name="postalCode" type="text" data-path="address.postalCode">
     <label for="addressCountry">Country:</label>
     <input class="addressCountry" name="addressCountry" type="text" data-path="address.addressCountry">
-    <label for="geoOption">Include Lat/Long coordinates for better location?</label>
-    <input class="geoOption" name="geoOption" type="checkbox" data-path='check' value='GeoCoordinates'>
-    <span class="geoHolder"></span>
+    <label for="geoOption">Include Lat/Long coordinates for better location</label>
+    <br/>
+    <input type='hidden' data-path='geo.@type' value='GeoCoordinates'>
+    <label for="geoLat">Latitude:</label>
+    <input type='text' class='geoLat' name='geoLat' data-path='geo.latitude'>
+    <label for="geoLong">Longitude:</label>
+    <input type='text' name='geoLong' data-path='geo.longitude'>
     <label for="hasMap">Include a Map: <span class="mapHelp"><i class="fa fa-question-circle"></i></span></label>
     <input class="hasMap" name="hasMap" type="text" data-path="hasMap">
     <p>
@@ -423,7 +437,7 @@
     </div>
     <input type="hidden" data-path="contactPoint.@type" value="ContactPoint">
     <label for="telephone">Telephone:</label>
-    <input class="telephone" name="telephone" type="text" data-path="contactPoint.telephone">
+    <input class="telephone" name="telephone" type="text" data-path="contactPoint.telephone" placeholder="+1(XXX) XXX-XXXX">
     <label for="contactType">Contact Type:</label>
     <input class="contactType" name="contactType" type="text" data-path="contactPoint.contactType">
   </form>
@@ -447,13 +461,6 @@
       Reset Form
     </button>
   </div>
-</div>
-<div id="geoHidden" style="display: none;">
-  <input type='hidden' data-path='geo.@type' value='GeoCoordinates'>
-  <label for="geoLat">Latitude:</label>
-  <input type='text' id='geoLat' name='geoLat' data-path='geo.latitude'>
-  <label for="geoLong">Longitude:</label>
-  <input type='text' id='geoLong' name='geoLong' data-path='geo.longitude'>
 </div>
 <div id="sameAsHidden" style="display: none;">
   <input class="sameAsField" name="sameAs" type="text">
