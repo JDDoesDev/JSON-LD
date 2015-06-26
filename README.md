@@ -5,7 +5,7 @@ This web app is designed to make it easier to generate JSON-LD for Schema.org ma
 
 ## Installation
 
-Place in desired directory, add your own CSS to make it look nice, put a link to [My website](https://jamesdflynn.com) as the source, and enjoy!
+Place in desired directory, add your own CSS to make it look nice, put a link to [My website](https://jamesdflynn.com) as the source along with a Twitter mention or 2 [@JDDoesDev](http://twitter.com/jddoesdev) and enjoy!
 
 ## Instructions
 
