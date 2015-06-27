@@ -59,12 +59,14 @@ input, select, textarea {
   margin-top: 2em;
   display: inline-block;
   width: 45%;
-  height: 50%;
+  height: 67%;
+  position: fixed;
 }
 .json {
   width: 100%;
-  height: 80%;
+  height: 67%;
 }
+
 .openHours, .closeHours {
   float: left;
   width: 50%;
