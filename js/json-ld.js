@@ -1,6 +1,4 @@
 $(function() {
-
-  // start a prototype function to make it easier to capitalize everything using JS
   String.prototype.capitalize = function() {
     var split = this.split(''),
         upper = false;
@@ -48,95 +46,71 @@ $(function() {
 
   //changes the displayed form based on the selection
 
+
   var $timeKeeper = $('#timeKeeper').html();
-  /* if the openDays checkbox is checked then start the process to add
-   * the hour selections
-   */
 
   $('.openDays').change(function() {
     if ($(this).is(':checked')) {
-      // instantiate the days object/array
       days = [];
-      // start building the days object
+      //console.log(this);
       $(this).after($timeKeeper);
       $('.openDays', selected).each(function() {
         if ($(this).is(':checked')) {
           days.push($(this).data('day'));
         }
       });
+     // console.log(days);
     } else {
-      // if the checkbox is unchecked then remove the day from the object
       $('.openHours, .closeHours', $(this).parent()).remove();
       var p = $.inArray($(this).data('day'), days);
       days.splice(p, 1);
+      //console.log(days);
     }
   });
 
-  // this is going to add the times to the days object
   $(document).on('change', '.openHours select, .closeHours select, .openDays', function() {
     var hourObj = hourCheck(days, selected),
         prevDayHours;
-    var dayList = '',
-        $openingHours = $('.openingHours', selected);
-    // map the keys of the hourObj and add a 'used' property
-    // the used property will let us know if that key is added to the string
+    var dayList = '';
     var hourKeys = Object.keys(hourObj).map(function(key) {
       return {
         key : key,
         used : false
       };
     });
-
-    // iterate through the keys
     hourKeys.forEach(function(keyObj, i) {
-
-      // if this key has been used already get outta here
       if (keyObj.used) {
         return;
       }
       var size = hourKeys.length;
       var currentTime = hourObj[keyObj.key];
-      // the time string for this key
 
       keyObj.used = true;
-      // set this key as used
       dayList += keyObj.key;
-      // go ahead and add this key to the main string
 
-      // iterate through the keys again to see if any other time strings match the current one
       hourKeys.forEach(function(k) {
-        // if this key has been used or is the same one we're on in the outer
-        // forEach, return out
         if (k.used || k.key === keyObj.key) {
           return;
         }
-
-        // check if the currentTime and the inner iteration key have the same time
         if (currentTime === hourObj[k.key]) {
           dayList += ', ' + k.key;
-          // add it to the main string
           k.used = true;
-          // set it as used
         }
       });
 
-      dayList += ' ' + currentTime;
-      // add the time to the string
+      dayList += ' ' + hourObj[keyObj.key];
 
       if (i < size - 1) {
         dayList += ' ';
-        // throw a space in there if it's not the last item in the list
       }
     });
     dayList = dayList.trim();
-    // trim it just in case
 
-    $openingHours.val(dayList);
-    $openingHours.change();
+    $('.openingHours', selected).val(dayList);
+    $('.openingHours', selected).change();
 
   });
 
-  // this function creates an object from the days/times selected
   function hourCheck(days, selected) {
     var hours = {},
         $days = $(days);
@@ -164,8 +138,6 @@ $(function() {
   });
 
   var sameAsField = $('#sameAsHidden').html(),
-      $label = $('label[for=sameAs]', selected),
-      $sameAsField = $('.sameAsField', selected),
       sameAsUrls = [],
       sameAsCount = 0,
       sameAsString = "";
@@ -173,34 +145,34 @@ $(function() {
   $('.addUrl').click(function(e) {
     e.preventDefault();
     if ($('.url', selected).next('.sameAsField').length === 0) {
-      $label.css('display', 'initial');
-      $label.after(sameAsField);
-      $sameAsField.last().attr('name', 'sameAs_' + sameAsCount);
-      $('.removeUrl', selected).css('display', 'initial');
+      $('label[for=sameAs]', selected).css('display','initial');
+      $('label[for=sameAs]', selected).after(sameAsField);
+      $('.sameAsField', selected).last().attr('name', 'sameAs_' + sameAsCount);
+      $('.removeUrl', selected).css('display','initial');
       sameAsCount++;
     } else {
-      $sameAsField.last().after(sameAsField);
-      $sameAsField.last().attr('name', 'sameAs_' + sameAsCount);
+      $('.sameAsField', selected).last().after(sameAsField);
+      $('.sameAsField', selected).last().attr('name', 'sameAs_' + sameAsCount);
       sameAsCount++;
     }
   });
   $('.removeUrl').click(function(e) {
     e.preventDefault();
-    if ($sameAsField.length > 1) {
-      $sameAsField.last().remove();
+    if ($('.sameAsField', selected).length > 1) {
+      $('.sameAsField', selected).last().remove();
       sameAsCount--;
     } else {
-      $sameAsField.last().remove();
+      $('.sameAsField', selected).last().remove();
       $('.url', selected).next('.sameAsField').remove();
-      $('label[for=sameAs]', selected).css('display', 'none');
-      $('.removeUrl', selected).css('display', 'none');
+      $('label[for=sameAs]', selected).css('display','none');
+      $('.removeUrl', selected).css('display','none');
       sameAsCount--;
     }
   });
 
   $(document).on('blur', '.sameAsField', function() {
     sameAsString = '';
-    $sameAsField.each(function(index) {
+    $('.sameAsField', selected).each(function(index) {
       sameAsUrls[index] = ($(this).val());
     });
     $(sameAsUrls).each(function(r) {
@@ -263,8 +235,8 @@ $(function() {
         $offerPrice = $('.offerPrice', selected),
         $locationName = $('.location-name', selected),
         $locationURL = $('.location-url', selected);
-    $geoLat = $('.geoLat', selected);
-    $geoLong = $('.geoLong', selected);
+        $geoLat = $('.geoLat', selected);
+        $geoLong = $('.geoLong', selected);
 
     // fire when a key is pressed in an input or textarea
     $(document).on('keyup', $input, function() {
