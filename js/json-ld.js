@@ -170,10 +170,10 @@ $(function() {
       $('.removeUrl', selected).css('display','none');
       sameAsCount--;
     }
-    console.log(sameAsCount);
     if (sameAsCount === 0) {
       $('.sameAsData', selected).val('');
     }
+    $('.url', selected).keyup();
   });
 
   $(document).on('keyup', '.sameAsField', function() {
@@ -192,7 +192,6 @@ $(function() {
       }
     });
     if (sameAsString.length > 0) {
-      console.log($('.sameAsData'));
       $('.sameAsData', selected).val('');
       $('.sameAsData', selected).val(sameAsString);
       $('.sameAsData', selected).change();
