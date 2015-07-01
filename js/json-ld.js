@@ -107,7 +107,7 @@ $(function() {
     dayList = dayList.trim();
 
     $('.openingHours', selected).val(dayList);
-    $('.openingHours', selected).change();
+    $('.url', selected).keyup();
 
   });
 
